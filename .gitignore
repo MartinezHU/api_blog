@@ -1,0 +1,51 @@
+# Compiled binaries
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code settings
+.vscode/
+.vs/
+
+# Rider settings
+.idea/
+
+# Build artifacts
+*.exe
+*.dll
+*.pdb
+*.cache
+*.log
+*.bak
+*.swp
+
+# NuGet dependencies
+*.nupkg
+**/packages/
+
+# Entity Framework migrations
+Migrations/
+
+# ASP.NET temp files
+.nuxt/
+
+# Local databases
+*.mdf
+*.ldf
+
+# Environment variables
+.env
+
+# Secrets and credentials
+secrets.json
+appsettings.Development.json
+
+# Node.js dependencies (if using frontend)
+node_modules/
+yarn.lock
+package-lock.json
