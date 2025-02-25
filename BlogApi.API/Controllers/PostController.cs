@@ -11,13 +11,14 @@ namespace Blog.API.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    [Authorize(Policy = "PostOwnerPolicy")]
+    [Authorize]
     public class PostController(IMediator mediator) : ControllerBase
     {
         private readonly IMediator _mediator = mediator;
 
         [HttpPost(Name = "CreatePost")]
         [ProducesResponseType((int)HttpStatusCode.OK)]
+        [Consumes("application/json")]
         public async Task<ActionResult<int>> CreatePost([FromBody] CreatePostCommand command)
         {
             return await _mediator.Send(command);
@@ -32,6 +33,15 @@ namespace Blog.API.Controllers
 
             return Ok(posts);
         }
+
+        //[HttpGet("id", Name = "GetPostById")]
+        //[ProducesResponseType(StatusCodes.Status204NoContent)]
+        //[ProducesResponseType(StatusCodes.Status404NotFound)]
+        //[ProducesDefaultResponseType]
+        //public async Task<ActionResult> GetPostById(int id)
+        //{
+        //    var command = new GetPost
+        //}
 
         [HttpPut(Name = "UpdatePost")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]

@@ -1,5 +1,4 @@
-﻿using Blog.Domain;
-using Blog.Domain.Enums;
+﻿using Blog.Domain.Enums;
 using MediatR;
 
 namespace Blog.Application.Features.Posts.Commands.CreatePost
@@ -9,7 +8,6 @@ namespace Blog.Application.Features.Posts.Commands.CreatePost
         public string Title { get; set; } = string.Empty;
         public string Content { get; set; } = string.Empty;
         public int AuthorId { get; set; }
-        public User? Author { get; set; }
         public PostStatus Status { get; set; }
     }
 }

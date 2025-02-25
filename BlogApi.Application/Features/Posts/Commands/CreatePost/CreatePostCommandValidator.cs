@@ -14,9 +14,6 @@ namespace Blog.Application.Features.Posts.Commands.CreatePost
             RuleFor(p => p.Content)
                 .NotEmpty().WithMessage("{Content} cannot be empty");
 
-            RuleFor(p => p.Author)
-                .NotNull().WithMessage("{Author} cannot be null");
-
             RuleFor(p => p.Status)
                 .NotNull().WithMessage("{Status} cannot be null");
         }
