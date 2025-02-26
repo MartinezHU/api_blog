@@ -5,12 +5,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Infrastructure.Repositories
 {
-    public class PostRepository : RepositoryBase<Post>, IPostRepository
+    public class PostRepository(BlogDbContext context) : RepositoryBase<Post>(context), IPostRepository
     {
-        public PostRepository(BlogDbContext context) : base(context)
-        {
-        }
-
         public async Task<Post> GetPostById(int postId)
         {
             return await _context.Posts!.Where(p => p.Id == postId).FirstOrDefaultAsync();

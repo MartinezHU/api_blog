@@ -7,6 +7,11 @@ namespace Blog.Infrastructure.Persistence
     public class BlogDbContext(DbContextOptions<BlogDbContext> options) : DbContext(options)
     {
         public DbSet<Post> Posts { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<PostHistory> PostHistories { get; set; }
+        public DbSet<Tag> Tags { get; set; }
+        public DbSet<PostTag> PostTags { get; set; }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -42,7 +47,10 @@ namespace Blog.Infrastructure.Persistence
                       .OnDelete(DeleteBehavior.Restrict);
             });
 
-
+            modelBuilder.Entity<User>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+            });
         }
     }
 

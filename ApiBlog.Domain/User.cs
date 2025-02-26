@@ -7,8 +7,9 @@ namespace Blog.Domain
 
         public int AuthUserId { get; set; }
         public string UserName { get; set; } = string.Empty;
-        public ICollection<Post> Posts { get; set; } = [];
-        public ICollection<Comment> Comments { get; set; } = [];
-        public ICollection<PostHistory> PostHistories { get; set; } = [];
+        public bool IsActive { get; set; } = false;
+        public ICollection<Post>? Posts { get; set; }
+        public ICollection<Comment>? Comments { get; set; }
+        public ICollection<PostHistory>? PostHistories { get; set; }
     }
 }

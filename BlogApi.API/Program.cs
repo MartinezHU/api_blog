@@ -9,6 +9,9 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
+
+
 // Habilitar PII para ver detalles completos del error
 IdentityModelEventSource.ShowPII = true;
 
@@ -18,7 +21,7 @@ Env.Load();
 // Obtener la clave secreta del entorno y verificar que no sea nula
 
 var encodedKey = Environment.GetEnvironmentVariable("API_AUTH_SECRET_KEY");
-var decodedKey = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(encodedKey));
+var decodedKey = System.Text.Encoding.UTF8.GetString(Convert.FromBase64String(encodedKey!));
 
 if (string.IsNullOrEmpty(decodedKey))
 {
@@ -26,9 +29,6 @@ if (string.IsNullOrEmpty(decodedKey))
 }
 
 var key = Encoding.UTF8.GetBytes(decodedKey);
-
-Console.WriteLine("Clave secreta cargada: " + key);
-Console.WriteLine("Bytes de la clave secreta: " + BitConverter.ToString(key));
 
 // Configurar autenticación JWT
 builder.Services.AddAuthentication(options =>

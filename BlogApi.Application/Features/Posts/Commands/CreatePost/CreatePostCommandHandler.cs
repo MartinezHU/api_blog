@@ -7,19 +7,12 @@ using Microsoft.Extensions.Logging;
 
 namespace Blog.Application.Features.Posts.Commands.CreatePost
 {
-    public class CreatePostCommandHandler : IRequestHandler<CreatePostCommand, int>
+    public class CreatePostCommandHandler(IPostRepository repository, IMapper mapper, ILogger<CreatePostCommandHandler> logger, IHttpContextAccessor httpContextAccessor) : IRequestHandler<CreatePostCommand, int>
     {
-        private readonly IPostRepository _repository;
-        private readonly IMapper _mapper;
-        private readonly ILogger<CreatePostCommandHandler> _logger;
-        private readonly IHttpContextAccessor _httpContextAccessor;
-        public CreatePostCommandHandler(IPostRepository repository, IMapper mapper, ILogger<CreatePostCommandHandler> logger, IHttpContextAccessor httpContextAccessor)
-        {
-            _repository = repository;
-            _mapper = mapper;
-            _logger = logger;
-            _httpContextAccessor = httpContextAccessor;
-        }
+        private readonly IPostRepository _repository = repository;
+        private readonly IMapper _mapper = mapper;
+        private readonly ILogger<CreatePostCommandHandler> _logger = logger;
+        private readonly IHttpContextAccessor _httpContextAccessor = httpContextAccessor;
 
         public async Task<int> Handle(CreatePostCommand request, CancellationToken cancellationToken)
         {

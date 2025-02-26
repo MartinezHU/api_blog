@@ -19,11 +19,9 @@ namespace Blog.Infrastructure
 
             );
 
-
             services.AddScoped(typeof(IASyncRepository<>), typeof(RepositoryBase<>));
             services.AddScoped<IPostRepository, PostRepository>();
-
-
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }
