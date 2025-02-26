@@ -7,9 +7,9 @@ namespace Blog.Infrastructure.Repositories
 {
     public class UserRepository(BlogDbContext context) : RepositoryBase<User>(context), IUserRepository
     {
-        public Task<User> GetUserById(int id)
+        public Task<User> GetByAuthUserId(int id)
         {
-            return _context.Users.FirstOrDefaultAsync(u => u.Id == id)!;
+            return _context.Users.FirstOrDefaultAsync(u => u.AuthUserId == id)!;
         }
     }
 }

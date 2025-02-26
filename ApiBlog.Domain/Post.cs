@@ -1,6 +1,4 @@
-﻿// Ignore Spelling: Blog
-
-using Blog.Domain.Common;
+﻿using Blog.Domain.Common;
 using Blog.Domain.Enums;
 
 namespace Blog.Domain
@@ -13,8 +11,8 @@ namespace Blog.Domain
         public int AuthorId { get; set; }
         public required User Author { get; set; }
         public PostStatus Status { get; set; }
-        public ICollection<Comment> Comments { get; set; } = [];
-        public ICollection<PostHistory> PostHistories { get; set; } = [];
-        public ICollection<PostTag> PostTags { get; set; } = [];
+        public ICollection<Comment>? Comments { get; set; }
+        public ICollection<PostHistory>? PostHistories { get; set; }
+        public ICollection<PostTag>? PostTags { get; set; }
     }
 }

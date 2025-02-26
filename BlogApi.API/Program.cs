@@ -9,9 +9,6 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-
-
 // Habilitar PII para ver detalles completos del error
 IdentityModelEventSource.ShowPII = true;
 
